@@ -1,0 +1,16 @@
+1)
+SELECT *
+FROM Worker_Details
+WHERE SALARY IN(SELECT SALARY
+                 FROM Worker_Details
+	         WHERE WORKER_ID NOT IN(SELECT MAX(WORKER_ID)
+				         FROM Worker_Details
+				         GROUP BY SALARY));
+
+
+2)
+SELECT FIRST_NAME,LAST_NAME,DEPARTMENT
+FROM Worker_Details
+WHERE SALARY IN (SELECT MAX(SALARY)
+                 FROM Worker_Details
+		 GROUP BY DEPARTMENT);
